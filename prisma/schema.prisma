@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id         String      @id 
+  name       String
+  lastname   String
+  cpf        String   @unique
+  license    String   
+  phone      String
+  email      String   @unique
+  cep        String
+  address    String
+  number     String
+  complement String?
+  district   String
+  uf         String
+  password   String
+  city       String
+  contact    Boolean @default(true)
+  status     UserStatus @default(ACTIVE)
+  createdAt DateTime @default(now())
+
+  @@map("users")
+}
+
+model Seller {
+  id           Int      @id @default(autoincrement())
+  name         String
+  lastname     String
+  cpf          String   @unique
+  phone        String
+  email        String   @unique
+  cnpj         String   @unique
+  company      String
+  fantasyName  String
+  segment      Segment[]
+  cep          String
+  address      String
+  number       String
+  complement   String?
+  district     String
+  uf           String
+  password     String
+  image        String?
+  condition    Condition @default(NEW)
+  createdAt DateTime @default(now())
+
+  @@map("sellers")
+}
+
+model Search {
+  id          Int      @id @default(autoincrement())
+  line        Line
+  segment     Segment   @default(ACCESSORIES)
+  condition   Condition
+  observation String?
+  status      SearchStatus @default(OPEN)
+  createdAt DateTime @default(now())
+
+  @@map("searchs")
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum Condition {
+  NEW
+  USED
+  REFURBISHED
+}
+
+enum Segment {
+  ACCESSORIES
+  RUBBERSHOP
+  ELECTRICAL
+  LIGHTING
+  BODYWORK
+  ENGINE
+  SUSPENSION
+}
+
+enum Line {
+  LIGHT
+  HEAVY
+}
+
+enum SearchStatus {
+  OPEN
+  ANSWERED
+  ABANDONED
+  UNANSWERED
+  CANCELED
+}
