@@ -57,15 +57,19 @@ model Seller {
 }
 
 model Search {
-  id          Int      @id @default(autoincrement())
+  id          String      @id 
+  id_user     String
+  name        String
+  quantity    Int
   line        Line
+  license     String
   segment     Segment   @default(ACCESSORIES)
   condition   Condition
   observation String?
   status      SearchStatus @default(OPEN)
   createdAt DateTime @default(now())
 
-  @@map("searchs")
+  @@map("")
 }
 
 enum UserStatus {

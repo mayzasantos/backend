@@ -14,12 +14,13 @@ export class AuthService {
     password: string,
   ): Promise<{ access_token: string }> {
     const user = await this.usersService.findEmail(email);
-    console.log(user)
     if (!user){
         console.log('Usuário não encontrado')
         throw new UnauthorizedException()
     }
+    console.log(user.password, password)
     if (user?.password !== password) {
+       
         console.log('Senha Incorreta')
         throw new UnauthorizedException();
     }

@@ -18,7 +18,8 @@ import {
     @HttpCode(HttpStatus.OK)
     @Post('login')
     signIn(@Body() signInDto: Record<string, any>) {
-      return this.authService.signIn(signInDto.username, signInDto.password);
+      console.log(signInDto.email,signInDto.password)
+      return this.authService.signIn(signInDto.email, signInDto.password);
     }
   
     @UseGuards(AuthGuard)

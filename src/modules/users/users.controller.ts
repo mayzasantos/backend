@@ -15,6 +15,12 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @Get('email')
+  findEmail(@Body() email:string){
+    return  this.usersService.findEmail(email)
+  }
+
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
