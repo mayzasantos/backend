@@ -6,7 +6,7 @@ dotenv.config();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const port = process.env.PORT || 4689
+  const port = process.env.PORT || 5000
 
   app.enableCors({
     origin: 'http://localhost:3000', // Permita apenas essa origem
