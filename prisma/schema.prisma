@@ -59,6 +59,7 @@ model Seller {
 model Search {
   id          String      @id 
   id_user     String
+  code String
   name        String
   quantity    Int
   line        Line
@@ -68,8 +69,9 @@ model Search {
   observation String?
   status      SearchStatus @default(OPEN)
   createdAt DateTime @default(now())
+  expirationTime DateTime?
 
-  @@map("")
+  @@map("searchs")
 }
 
 enum UserStatus {

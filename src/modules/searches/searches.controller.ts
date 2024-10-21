@@ -1,13 +1,23 @@
 import { Controller, Get, Post, Body, Param, Patch, Delete } from '@nestjs/common';
 import { SearchService } from './searches.service';
+import { CreateSearchDto } from 'src/dtos/CreateSearchDto.dto';
 
 @Controller('searches')
 export class SearchesController {
   constructor(private readonly searchService: SearchService) {} // Injetando o serviço
 
   @Post()
-  create(@Body() createSearchDto) { 
-    return this.searchService.create(createSearchDto);
+  async create(@Body() createSearchDto) { 
+    // Calcula a data atual
+    const createdAt = new Date(); 
+
+    // Calcula a data de expiração (72 horas depois)
+    const expirationTime = new Date(createdAt.getTime() + 72 * 60 * 60 * 1000); 
+
+    return this.searchService.create({
+      ...createSearchDto,// Inclui a data de criação
+      expirationTime, // Inclui a data de expiração
+    });
   }
 
   @Get()

@@ -18,7 +18,6 @@ export class AuthService {
         console.log('Usuário não encontrado')
         throw new UnauthorizedException()
     }
-    console.log(user.password, password)
     if (user?.password !== password) {
        
         console.log('Senha Incorreta')
