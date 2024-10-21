@@ -1,6 +1,5 @@
 import { Controller, Get, Post, Body, Param, Patch, Delete } from '@nestjs/common';
 import { SearchService } from './searches.service';
-import { CreateSearchDto } from 'src/dtos/CreateSearchDto.dto';
 
 @Controller('searches')
 export class SearchesController {
