@@ -22,6 +22,10 @@ export class AuthService {
         console.log('Usuário não encontrado')
         throw new UnauthorizedException()
     }
+
+    if (user && seller){
+      console.log('Tem os dois usuários')
+    }
    
     if (user){
       const passwordMatch = await bcrypt.compare(password, user.password)
