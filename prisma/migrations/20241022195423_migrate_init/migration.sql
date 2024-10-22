@@ -39,7 +39,7 @@ CREATE TABLE "users" (
 
 -- CreateTable
 CREATE TABLE "sellers" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "lastname" TEXT NOT NULL,
     "cpf" TEXT NOT NULL,
