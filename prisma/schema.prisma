@@ -33,24 +33,24 @@ model User {
 
 model Seller {
   id           String      @id 
-  name         String
-  lastname     String
-  cpf          String   @unique
-  phone        String
-  email        String   @unique
+  address      String
+  cep          String
+  city         String
   cnpj         String   @unique
   company      String
+  cpf          String   @unique
+  district     String
+  email        String   @unique
   fantasyName  String
+  image        String?
+  lastname     String
+  name         String
+  password     String
+  phone        String
   segment      Segment[]
-  cep          String
-  address      String
   number       String
   complement   String?
-  district     String
   uf           String
-  password     String
-  image        String?
-  condition    Condition @default(NEW)
   createdAt DateTime @default(now())
 
   @@map("sellers")
